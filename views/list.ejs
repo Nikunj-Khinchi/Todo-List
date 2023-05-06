@@ -1,0 +1,29 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+  
+      <!--         here the .name is the printing the name from database i passed  varaibles in render so its whole object now here i call that object inside the for loop so and i print the name form that whole object -->
+      <% newListItems.forEach(item => { %>
+
+        <form action="/delete" method="post">
+           <div class="item">
+          <input type="checkbox" name="checkBox" value="<%=item._id%>" onchange="this.form.submit()">
+        <p><%=  item.name  %></p>
+      </div>
+        </form>
+
+       
+      <% }) %>
+      
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list" value=<%= listTitle %>>+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>
